@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy]
   
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
+
 end
